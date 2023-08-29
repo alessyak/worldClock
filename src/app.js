@@ -34,8 +34,13 @@ function updateCityData(event) {
           <div class="time">${cityTime.format(
             "h:mm:ss [<small>]A[</small>]"
           )}</div>
-        </div>`;
+        </div>
+        <a href="/" id="link">All cities</a>`;
 }
 
+let updateInterval;
 let cities = document.querySelector("#cityOption");
-cities.addEventListener("change", updateCityData);
+cities.addEventListener("change", function (event) {
+  updateCityData(event);
+  updateInterval = setInterval(() => updateCityData(event), 1000);
+});
